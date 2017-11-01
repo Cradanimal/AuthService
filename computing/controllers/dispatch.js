@@ -36,6 +36,7 @@ module.exports = (event, res) => {
       // dynamo.query(getDispatcherRecord).promise()
 
       .then(data => {
+        console.log(data.password, data, data[0]);
         if (data.length > 0) {
           console.log(event.password, data[0].password);
           event.dispatcherId = data[0].dispatcherId;
