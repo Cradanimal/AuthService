@@ -37,10 +37,10 @@ module.exports = (event, res) => {
 
       .then(data => {
         console.log(data);
-        if (data.Count > 0) {
-          event.dispatcherId = data.Items[0].dispatcherId;
-          event.authorityId = data.Items[0].authorityId;
-          return bcrypt.compare(event.password, data.Items[0].password);
+        if (data.length > 0) {
+          event.dispatcherId = data[0].dispatcherId;
+          event.authorityId = data[0].authorityId;
+          return bcrypt.compare(event.password, data[0].password);
         } else {
           reject({errorCode: 404, reason: 'value does not match any record in Dispatcher Table' });
         }
@@ -75,7 +75,7 @@ module.exports = (event, res) => {
         }
       })
       .then(data => {
-        if (data.Count > 0) {
+        if (data.authorityId) {
           return token({dispatcherId : event.dispatcherId, sandbox: false }, event.UUID);
         } else {
           reject({errorCode: 404, reason: 'Invalid AuthorityId' });
