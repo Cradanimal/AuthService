@@ -1,0 +1,23 @@
+{
+  "name": "auth-services",
+  "version": "1.0.0",
+  "description": "Authentication for clients accessing various copia gateways, running on lambda serverless computing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Bonrad Bimberly",
+  "license": "ISC",
+  "jshintConfig": {
+    "esversion": 6,
+    "node": true
+  },
+  "dependencies": {
+    "base64-url": "2.0.0",
+    "bcrypt": "1.0.3",
+    "bluebird": "3.5.1",
+    "jsonwebtoken": "8.1.0",
+    "request": "2.83.0",
+    "request-promise": "4.2.2"
+  }
+}
