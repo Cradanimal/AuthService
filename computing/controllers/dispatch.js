@@ -65,7 +65,7 @@ module.exports = (event, res) => {
             json: true
           };
 
-          request(options);
+          return request(options);
                 // TODO:
 
           // return dynamo.query(verifyAuthorityId).promise();
