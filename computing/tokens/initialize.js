@@ -43,7 +43,7 @@ module.exports = (record, uuId, secret) => {
         json: true
       };
 
-      request(postToSessionTable);
+      return request(postToSessionTable);
     })
     .then(data => {
       const token = storage.token;
