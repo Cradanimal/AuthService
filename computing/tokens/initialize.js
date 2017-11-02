@@ -35,7 +35,8 @@ module.exports = (record, uuId, secret) => {
 
       const postToSessionTable = {
         method: 'POST',
-        uri: 'http://180.0.195.100/Session',
+        // uri: 'http://180.0.195.100/Session',
+        uri: `http://datacore.copia.vpc/Session`,
         body: record,
         headers: {
           'User-Agent': 'Request-Promise'

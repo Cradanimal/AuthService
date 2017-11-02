@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 const bcrypt = require('bcrypt');
 const token = require('../tokens/initialize');
 
-module.exports = (event, res) => {
+module.exports = (event, secret) => {
   return new Promise((resolve, reject) => {
     // PULL DISPATCHER USING EMAIL
     // VALIDATE PASSWORD AGAINST HASH
@@ -76,7 +76,7 @@ module.exports = (event, res) => {
       .then(data => {
         console.log(data);
         if (data.authorityId) {
-          return token({dispatcherId : event.dispatcherId, sandbox: false }, event.UUID);
+          return token({dispatcherId : event.dispatcherId, sandbox: false }, event.UUID, secret);
         } else {
           reject({errorCode: 404, reason: 'Invalid AuthorityId' });
         }
