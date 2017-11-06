@@ -36,7 +36,6 @@ module.exports = (event, secret) => {
       // dynamo.query(getDispatcherRecord).promise()
       // .then(JSON.parse)
       .then(data => {
-        console.log(data);
         if (data.length > 0) {
           console.log(event.password, data[0].password);
           event.dispatcherId = data[0].dispatcherId;
@@ -47,8 +46,8 @@ module.exports = (event, secret) => {
         }
       })
       .then(match => {
+        console.log(match);
         if (match) {
-          console.log('match');
 
           // next();
           // CALL TO GET TOKEN
@@ -76,7 +75,6 @@ module.exports = (event, secret) => {
         }
       })
       .then(data => {
-        console.log("data");
         if (data.authorityId) {
           return token({dispatcherId : event.dispatcherId, sandbox: false }, event.UUID, secret);
         } else {
