@@ -42,7 +42,7 @@ module.exports = (event, secret) => {
           event.authorityId = data[0].authorityId;
           return bcrypt.compare(event.password, data[0].password);
         } else {
-          reject({errorCode: 404, reason: 'value does not match any record in Dispatcher Table' });
+          throw {errorCode: 404, reason: 'value does not match any record in Dispatcher Table' };
         }
       })
       .then(match => {
@@ -78,7 +78,7 @@ module.exports = (event, secret) => {
         if (data.authorityId) {
           return token({dispatcherId : event.dispatcherId, sandbox: false }, event.UUID, secret);
         } else {
-          reject({errorCode: 404, reason: 'Invalid AuthorityId' });
+          throw {errorCode: 404, reason: 'Invalid AuthorityId' };
         }
       })
       .then(token => {
@@ -91,6 +91,5 @@ module.exports = (event, secret) => {
     } else {
       reject({errorCode: 404, reason: 'request is missing a nessary value to login; email, password, or UUID'});
     }
-
   });
 };
