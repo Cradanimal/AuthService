@@ -71,7 +71,7 @@ module.exports = (event, secret) => {
 
           // return dynamo.query(verifyAuthorityId).promise();
         } else {
-          reject({errorCode: 404, reason: 'password is not a match to hash in table' });
+          throw {errorCode: 404, reason: 'password is not a match to hash in table' };
         }
       })
       .then(data => {
