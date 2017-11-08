@@ -86,10 +86,10 @@ module.exports = (event, secret) => {
       })
       .catch(err => {
         console.log('DB QUERY ERROR', err);
-        reject(err);
+        reject(err.reason);
       });
     } else {
-      reject({errorCode: 404, reason: 'request is missing a nessary value to login; email, password, or UUID'});
+      reject('request is missing a nessary value to login; email, password, or UUID');
     }
   });
 };
