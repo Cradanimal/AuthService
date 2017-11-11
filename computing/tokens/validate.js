@@ -27,7 +27,7 @@ module.exports = (event, secret) => {
         };
         console.log('hey mang');
 
-        return request(options)
+        return request(options);
         // return dynamo.query(params).promise();
       })
       .then(data => {
